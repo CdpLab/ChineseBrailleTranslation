@@ -2,7 +2,6 @@ import os
 import json
 import random
 
-# ===== Paths (relative) =====
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.join(BASE_DIR, "source_data")
 OUT_DIR = os.path.join(BASE_DIR, "Parallel Corpus")
@@ -14,13 +13,11 @@ os.makedirs(BACKUP_DIR, exist_ok=True)
 ZH_PATH = os.path.join(SRC_DIR, "chinese.txt")
 BR_PATH = os.path.join(SRC_DIR, "braille.txt")
 
-# ===== Valid Braille chars =====
 VALID_BRAILLE = set(
     "⠂⠆⠒⠲⠢⠖⠶⠦⠔⠴⠁⠃⠉⠙⠑⠋⠛⠓⠊⠚⠅⠇⠍⠝⠕⠏⠟⠗⠎⠞⠥⠧⠺⠭⠽⠵"
     "⠮⠐⠼⠫⠩⠯⠄⠷⠾⠡⠬⠠⠤⠨⠌⠆⠰⠣⠿⠜⠹⠈⠪⠳⠻⠘⠸"
 )
 
-# ===== Utils =====
 def is_valid_braille(text: str) -> bool:
     allowed_spaces = {" ", "　", "⠀"}
     return all(ch in VALID_BRAILLE or ch in allowed_spaces for ch in text)
@@ -30,14 +27,12 @@ def load_lines(path):
     with open(path, "r", encoding="utf-8") as f:
         return [line.rstrip("\n\r") for line in f if line.strip()]
 
-# ===== Load & align =====
 zh_lines = load_lines(ZH_PATH)
 br_lines = load_lines(BR_PATH)
 n = min(len(zh_lines), len(br_lines))
 zh_lines, br_lines = zh_lines[:n], br_lines[:n]
 print(f"[Align] {n} pairs")
 
-# ===== Clean =====
 pairs = []
 drop_invalid = drop_short = drop_dup = 0
 seen = set()
@@ -60,7 +55,6 @@ for zh, br in zip(zh_lines, br_lines):
 
 print(f"[Clean] keep={len(pairs)}, invalid={drop_invalid}, short={drop_short}, dup={drop_dup}")
 
-# ===== Build dataset =====
 data = [{"input_text": zh, "output_text": br} for zh, br in pairs]
 random.shuffle(data)
 total = len(data)
@@ -72,7 +66,6 @@ splits = {
     "test": data[val_end:]
 }
 
-# ===== Save =====
 def save_json(data, name):
     path = os.path.join(OUT_DIR, f"{name}.json")
     with open(path, "w", encoding="utf-8") as f:
@@ -88,4 +81,5 @@ with open(backup, "w", encoding="utf-8") as f:
         f.write(f"{zh}\t{br}\n")
 print(f"[Backup] {backup}")
 
-print("✅ Done.")
+print(" Done.")
+
