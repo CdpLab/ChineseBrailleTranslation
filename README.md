@@ -14,3 +14,9 @@ Please refer to the [official website](https://pytorch.org) for more information
 All the training and evaluation scripts use `accelerate` to speed up the training process.  
 If you want to run the scripts without `accelerate`, you can remove the related code in the scripts.  
 Remember to run `accelerate config` before you run our scripts, or you may encounter some errors.
+
+### Step 1. Add Braille Characters as New Tokens
+
+Before fine-tuning, all Braille Unicode characters must be added to the mT5 tokenizer to ensure that the model can recognize and generate Braille symbols directly.
+
+```python
