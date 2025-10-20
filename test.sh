@@ -3,7 +3,7 @@ set -e
 
 output_dir="./save_model/evaluation-final"
 
-accelerate launch train.py \
+accelerate launch run_translation.py \
   --model_name_or_path "./save_model" \
   --output_dir "$output_dir" \
   --validation_file "./Chinese_braille_data/Parallel Corpus/val.json" \
