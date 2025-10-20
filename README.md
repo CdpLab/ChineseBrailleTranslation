@@ -38,3 +38,8 @@ The model evaluation is conducted on the validation and test sets in `Chinese_br
 bash evaluation.sh
 ```
 
+### Model Architecture
+
+![Model Architecture](./image/Model%20Architecture%20Diagram.png)
+
+
