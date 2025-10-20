@@ -4,7 +4,3 @@ datasets
 evaluate
 tensorboard
 sacrebleu
-python braille_dataset_generation.py --output_dir .\data\10_pertent_tone --remove_tone_portion 0
-python combine_processed_data.py --braille_path "processed_data" --total_number 1000 --sliced_CN_datadir "sliced_data"
-python braille_convert.py --data_dir .\\sliced_data --output_dir .\\converted_data --max_workers 10
-python slicing.py --input_filename D:\py_file\ChineseBrailleTranslation-main\data_preparation\data\process_data.txt --output_filename_base sliced_data/processed_input --slice_size 1000
