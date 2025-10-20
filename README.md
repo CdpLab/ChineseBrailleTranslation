@@ -30,7 +30,7 @@ The fine-tuning process is based on the mT5-small model that has been extended w
 ```bash
 bash train.sh
 ```
-### Evaluation
+### Evaluate on the Validation and Test Set
 
 The model evaluation is conducted on the validation and test sets in Chinese_braille_data/Parallel Corpus. During evaluation, the model generates Braille outputs, which are compared with the reference Braille texts to assess translation quality. BLEU is used as the primary metric to evaluate the model’s performance on the Chinese-to-Braille translation task. The evaluation is performed using the evaluation.sh script, and all results and logs are automatically saved to the save_model/evaluation-final/ directory for further analysis and model comparison.
 
