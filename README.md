@@ -52,6 +52,7 @@ bash evaluation.sh
 
 ### Model Architecture
 
-![Model Architecture](./image/Model%20Architecture%20Diagram.png)
+[fig1](https://github.com/user-attachments/assets/e6517138-f242-4ea1-9463-bef64508d377)
+
 
 
